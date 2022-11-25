@@ -1,16 +1,16 @@
 // To parse this JSON data, do
 //
-//     final metaDataModels = metaDataModelsFromJson(jsonString);
+//     final onboarding = onboardingFromJson(jsonString);
 
 import 'dart:convert';
 
-MetaDataModels metaDataModelsFromJson(String str) =>
-    MetaDataModels.fromJson(json.decode(str));
+Onboarding onboardingFromJson(String str) =>
+    Onboarding.fromJson(json.decode(str));
 
-String metaDataModelsToJson(MetaDataModels data) => json.encode(data.toJson());
+String onboardingToJson(Onboarding data) => json.encode(data.toJson());
 
-class MetaDataModels {
-  MetaDataModels({
+class Onboarding {
+  Onboarding({
     this.image,
     this.title,
     this.description,
@@ -20,7 +20,7 @@ class MetaDataModels {
   String? title;
   String? description;
 
-  factory MetaDataModels.fromJson(Map<String, dynamic> json) => MetaDataModels(
+  factory Onboarding.fromJson(Map<String, dynamic> json) => Onboarding(
         image: json["image"],
         title: json["title"],
         description: json["description"],
