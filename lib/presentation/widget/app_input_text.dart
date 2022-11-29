@@ -30,7 +30,7 @@ class _AppInputTextState extends State<AppInputText> {
         decoration: InputDecoration(
             hintText: widget.label,
             hintStyle: AppFont.componentMedium,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
             contentPadding: EdgeInsets.symmetric(horizontal: AppDimen.w16)),
       ),
     );
