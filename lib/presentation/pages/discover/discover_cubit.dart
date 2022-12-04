@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
-
-part 'discover_state.dart';
+import 'discover_state.dart';
 
 class DiscoverCubit extends Cubit<DiscoverState> {
-  DiscoverCubit() : super(DiscoverInitial());
+  DiscoverCubit() : super(DiscoverState().init());
+
+  void changeIndex(int index) {
+    emit(state.clone()..selectedIndex = index);
+  }
 }

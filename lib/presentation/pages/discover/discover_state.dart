@@ -1,6 +1,10 @@
-part of 'discover_cubit.dart';
+class DiscoverState {
+  int selectedIndex = 0;
+  DiscoverState init() {
+    return DiscoverState();
+  }
 
-@immutable
-abstract class DiscoverState {}
-
-class DiscoverInitial extends DiscoverState {}
+  DiscoverState clone() {
+    return DiscoverState();
+  }
+}
