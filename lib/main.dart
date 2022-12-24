@@ -1,7 +1,7 @@
-import 'package:booking_app/presentation/pages/discover/discover_view.dart';
-import 'package:booking_app/presentation/pages/discover/favorite/favorite_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'presentation/pages/pages.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
