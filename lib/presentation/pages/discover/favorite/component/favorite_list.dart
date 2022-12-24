@@ -20,14 +20,14 @@ class FavoriteList extends StatelessWidget {
   Widget _listItem() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: AppDimen.h16),
-      height: 76.h,
+      height: 90.h,
       child: Card(
         child: ListTile(
           title: const Text('Aditya'),
           subtitle: const Text('Indonesia'),
           trailing: IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.arrow_forward_ios),
+            icon: const Icon(Icons.arrow_forward_ios, size: 18),
           ),
         ),
       ),
