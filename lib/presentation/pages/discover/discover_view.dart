@@ -1,19 +1,23 @@
-import 'package:booking_app/config/theme/app_color.dart';
-import 'package:booking_app/presentation/pages/discover/component/bottom_menu.dart';
-import 'package:booking_app/presentation/pages/discover/discover_cubit.dart';
-import 'package:booking_app/presentation/pages/discover/favorite/favorite_view.dart';
-import 'package:booking_app/presentation/pages/discover/settings/settings_view.dart';
-import 'package:booking_app/presentation/pages/discover/trips/trips_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'discover.dart';
+import 'discover_cubit.dart';
 import 'discover_state.dart';
+
+import 'component/component.dart';
+import '../../../config/config.dart';
 
 class DiscoverPage extends StatelessWidget {
   const DiscoverPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ApiClient apiClient = ApiClient();
+    apiClient.get(
+      Uri.parse(
+          'https://6aba88ae-3fb8-4ce7-936b-0dda92127ce5.mock.pstmn.io/api/v1/trips'),
+    );
     return BlocProvider(
       create: (context) => DiscoverCubit(),
       child: Builder(
