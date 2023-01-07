@@ -13,11 +13,6 @@ class DiscoverPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ApiClient apiClient = ApiClient();
-    apiClient.get(
-      Uri.parse(
-          'https://6aba88ae-3fb8-4ce7-936b-0dda92127ce5.mock.pstmn.io/api/v1/trips'),
-    );
     return BlocProvider(
       create: (context) => DiscoverCubit(),
       child: Builder(

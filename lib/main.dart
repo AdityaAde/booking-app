@@ -1,8 +1,7 @@
+import 'package:booking_app/presentation/pages/welcome/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:logging/logging.dart';
-
-import 'presentation/pages/pages.dart';
 
 void main() {
   Logger.root.level = Level.ALL;
@@ -23,13 +22,12 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return MaterialApp(
-            title: 'Booking App',
-            theme: ThemeData(
-              fontFamily: 'Poppins',
-              primarySwatch: Colors.blue,
-            ),
-            home: const DiscoverPage(),
-          );
+              title: 'Booking App',
+              theme: ThemeData(
+                fontFamily: 'Poppins',
+                primarySwatch: Colors.blue,
+              ),
+              home: const LoginPage());
         });
   }
 }
