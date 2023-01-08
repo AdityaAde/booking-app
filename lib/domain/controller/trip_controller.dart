@@ -11,7 +11,7 @@ class TripController implements TripRepository {
   Future<BaseResponse> detailTrips(int id) async {
     late final BaseResponse baseResponse;
     final response = await _client.get(
-      Uri.parse("${EndPoint.trip}/$id"),
+      Uri.parse("${Endpoint.trip}/$id"),
     );
     if (response.statusCode == 200) {
       baseResponse = BaseResponse.fromJson(jsonDecode(response.body));
@@ -25,7 +25,7 @@ class TripController implements TripRepository {
   Future<BaseResponse> getTrips() async {
     late final BaseResponse baseResponse;
     final response = await _client.get(
-      Uri.parse(EndPoint.trip),
+      Uri.parse(Endpoint.trip),
     );
     if (response.statusCode == 200) {
       baseResponse = BaseResponse.fromJson(jsonDecode(response.body));

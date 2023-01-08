@@ -1,4 +1,4 @@
-class EndPoint {
+class Endpoint {
   static const baseUrl =
       'https://6aba88ae-3fb8-4ce7-936b-0dda92127ce5.mock.pstmn.io';
   static const String login = "$baseUrl/api/v1/login";
