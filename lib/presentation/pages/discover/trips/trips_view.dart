@@ -1,17 +1,36 @@
-import 'package:booking_app/presentation/pages/discover/trips/component/other_matches.dart';
-import 'package:booking_app/presentation/pages/discover/trips/component/trips_your_roomies.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logging/logging.dart';
+
+import 'component/trips_other_matches.dart';
+import 'component/trips_your_roomies.dart';
+import 'trips_cubit.dart';
+import 'trips_state.dart';
 
 class TripsPage extends StatelessWidget {
-  const TripsPage({Key? key}) : super(key: key);
+  const TripsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        TripsYourRoomies(),
-        OtherMatches(),
-      ],
+    return BlocProvider(
+      create: (BuildContext context) => TripsCubit(),
+      child: Builder(builder: (context) => _buildPage(context)),
+    );
+  }
+
+  Widget _buildPage(BuildContext context) {
+    final cubit = BlocProvider.of<TripsCubit>(context);
+    cubit.getTrips();
+    return BlocBuilder<TripsCubit, TripsState>(
+      builder: (context, state) {
+        Logger.root.info('TripsPage build');
+        return Column(
+          children: [
+            TripsYourRoomies(yourRoomies: cubit.state.yourRoomies),
+            OtherMatches(otherMatches: state.otherMatches)
+          ],
+        );
+      },
     );
   }
 }

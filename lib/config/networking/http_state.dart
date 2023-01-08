@@ -1,3 +1,5 @@
+enum HttpStateStatus { initial, idle, loading, error, success }
+
 abstract class HttpState {
   void onStartRequest(String url, String method);
 

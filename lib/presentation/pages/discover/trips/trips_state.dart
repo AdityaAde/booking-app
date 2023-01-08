@@ -1,6 +1,16 @@
-part of 'trips_cubit.dart';
+import '../../../../config/config.dart';
+import '../../../../data/models/models.dart';
 
-@immutable
-abstract class TripsState {}
+class TripsState {
+  List<Trip> yourRoomies = [];
+  List<Trip> otherMatches = [];
+  HttpStateStatus status = HttpStateStatus.initial;
 
-class TripsInitial extends TripsState {}
+  TripsState init() {
+    return TripsState();
+  }
+
+  TripsState clone() {
+    return TripsState();
+  }
+}
