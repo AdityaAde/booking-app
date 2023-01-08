@@ -4,9 +4,11 @@ import 'package:get_it/get_it.dart';
 import 'package:logging/logging.dart';
 
 import 'config/router/app_router.dart';
+import 'utils/helper/pref_helper.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await PrefHelper.instance.init();
   GetIt.I.registerSingleton<AppRouter>(AppRouter());
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {
