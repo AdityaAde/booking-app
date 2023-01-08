@@ -1,6 +1,13 @@
-part of 'login_cubit.dart';
+import 'package:flutter/material.dart';
 
-@immutable
-abstract class LoginState {}
+class LoginState {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  LoginState init() {
+    return LoginState();
+  }
 
-class LoginInitial extends LoginState {}
+  LoginState clone() {
+    return LoginState();
+  }
+}
