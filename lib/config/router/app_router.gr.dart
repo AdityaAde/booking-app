@@ -13,10 +13,24 @@
 part of 'app_router.dart';
 
 class _$AppRouter extends RootStackRouter {
-  _$AppRouter([GlobalKey<NavigatorState>? navigatorKey]) : super(navigatorKey);
+  _$AppRouter({
+    GlobalKey<NavigatorState>? navigatorKey,
+    required this.firstInstallGuard,
+    required this.authGuard,
+  }) : super(navigatorKey);
+
+  final FirstInstallGuard firstInstallGuard;
+
+  final AuthGuard authGuard;
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    OnboardingRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const OnboardingPage(),
+      );
+    },
     WelcomeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -60,12 +74,18 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           '/#redirect',
           path: '/',
-          redirectTo: '/welcome',
+          redirectTo: '/onboarding',
           fullMatch: true,
+        ),
+        RouteConfig(
+          OnboardingRoute.name,
+          path: '/onboarding',
+          guards: [firstInstallGuard],
         ),
         RouteConfig(
           WelcomeRoute.name,
           path: '/welcome',
+          guards: [authGuard],
         ),
         RouteConfig(
           LoginRoute.name,
@@ -88,6 +108,18 @@ class _$AppRouter extends RootStackRouter {
           path: '/favorite',
         ),
       ];
+}
+
+/// generated route for
+/// [OnboardingPage]
+class OnboardingRoute extends PageRouteInfo<void> {
+  const OnboardingRoute()
+      : super(
+          OnboardingRoute.name,
+          path: '/onboarding',
+        );
+
+  static const String name = 'OnboardingRoute';
 }
 
 /// generated route for

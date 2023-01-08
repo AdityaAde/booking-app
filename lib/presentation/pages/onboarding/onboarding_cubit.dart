@@ -1,5 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get_it/get_it.dart';
+import '../../../config/router/app_router.dart';
+import '../../../utils/helper/pref_helper.dart';
 import 'onboarding_state.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
@@ -8,6 +11,8 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   void next() {
     if (state.currentIndex < state.onboardingList.length - 1) {
       emit(state.clone()..currentIndex = state.currentIndex + 1);
+    } else {
+      skip();
     }
   }
 
@@ -24,5 +29,8 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     }
   }
 
-  void skip() {}
+  void skip() {
+    PrefHelper.instance.setFirstInstall();
+    GetIt.I<AppRouter>().replace(const WelcomeRoute());
+  }
 }
