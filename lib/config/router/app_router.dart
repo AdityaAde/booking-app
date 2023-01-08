@@ -4,13 +4,28 @@ import 'package:flutter/material.dart';
 import '../../presentation/pages/discover/discover.dart';
 import '../../presentation/pages/pages.dart';
 import '../../presentation/pages/welcome/login/login_view.dart';
+import 'middleware/middleware.dart';
 
 part 'app_router.gr.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: WelcomePage, path: '/welcome', initial: true),
+    AutoRoute(
+      page: OnboardingPage,
+      path: '/onboarding',
+      initial: true,
+      guards: [
+        FirstInstallGuard,
+      ],
+    ),
+    AutoRoute(
+      page: WelcomePage,
+      path: '/welcome',
+      guards: [
+        AuthGuard,
+      ],
+    ),
     AutoRoute(page: LoginPage, path: '/login'),
     AutoRoute(page: DiscoverPage, path: '/discover'),
     AutoRoute(page: TripsPage, path: '/trips'),
