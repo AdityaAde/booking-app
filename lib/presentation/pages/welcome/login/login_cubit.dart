@@ -32,15 +32,18 @@ class LoginCubit extends Cubit<LoginState> implements HttpState {
   @override
   void onErrorRequest(String url, String method) {
     Logger.root.info("onErrorRequest $url $method");
+    emit(state.clone()..httpStateStatus = HttpStateStatus.error);
   }
 
   @override
   void onStartRequest(String url, String method) {
     Logger.root.info("onStartRequest $url $method");
+    emit(state.clone()..httpStateStatus = HttpStateStatus.loading);
   }
 
   @override
   void onSuccessRequest(String url, String method) {
     Logger.root.info("onSuccessRequest $url $method");
+    emit(state.clone()..httpStateStatus = HttpStateStatus.success);
   }
 }

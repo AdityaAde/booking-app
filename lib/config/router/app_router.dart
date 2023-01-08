@@ -15,16 +15,12 @@ part 'app_router.gr.dart';
       page: OnboardingPage,
       path: '/onboarding',
       initial: true,
-      guards: [
-        FirstInstallGuard,
-      ],
+      guards: [FirstInstallGuard],
     ),
     AutoRoute(
       page: WelcomePage,
       path: '/welcome',
-      guards: [
-        AuthGuard,
-      ],
+      guards: [AuthGuard],
     ),
     AutoRoute(page: LoginPage, path: '/login'),
     AutoRoute(page: DiscoverPage, path: '/discover'),
@@ -34,4 +30,9 @@ part 'app_router.gr.dart';
   ],
 )
 // extend the generated private router
-class AppRouter extends _$AppRouter {}
+class AppRouter extends _$AppRouter {
+  AppRouter({
+    required super.firstInstallGuard,
+    required super.authGuard,
+  });
+}

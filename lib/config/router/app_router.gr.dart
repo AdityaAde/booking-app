@@ -13,7 +13,15 @@
 part of 'app_router.dart';
 
 class _$AppRouter extends RootStackRouter {
-  _$AppRouter([GlobalKey<NavigatorState>? navigatorKey]) : super(navigatorKey);
+  _$AppRouter({
+    GlobalKey<NavigatorState>? navigatorKey,
+    required this.firstInstallGuard,
+    required this.authGuard,
+  }) : super(navigatorKey);
+
+  final FirstInstallGuard firstInstallGuard;
+
+  final AuthGuard authGuard;
 
   @override
   final Map<String, PageFactory> pagesMap = {
@@ -72,10 +80,12 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           OnboardingRoute.name,
           path: '/onboarding',
+          guards: [firstInstallGuard],
         ),
         RouteConfig(
           WelcomeRoute.name,
           path: '/welcome',
+          guards: [authGuard],
         ),
         RouteConfig(
           LoginRoute.name,
